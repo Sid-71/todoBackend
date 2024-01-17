@@ -10,7 +10,7 @@ app.use(express.json());
 app.use("/api/todo", todoRoute);
 app.use("/api/user", userRoute);
 
-app.use("api/naruto", (req, res) => {
+app.use("/api/naruto", (req, res) => {
   try {
     res.status(200).send({
       message: "itachi uchiha is the best",
