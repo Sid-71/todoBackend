@@ -7,9 +7,20 @@ const userRoute = require("./routes/user");
 require("dotenv").config();
 app.use(express.json());
 
-app.use("/todo", todoRoute);
-app.use("/user", userRoute);
+app.use("/api/todo", todoRoute);
+app.use("/api/user", userRoute);
 
+app.use("api/naruto", (req, res) => {
+  try {
+    res.status(200).send({
+      message: "itachi uchiha is the best",
+    });
+  } catch (error) {
+    res.status(404).send({
+      messgae: "not found in naruto",
+    });
+  }
+});
 app.listen(4000, () => {
   console.log("server is running 4000");
 });
@@ -27,8 +38,6 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-var MongoClient = require("mongodb").MongoClient;
 
 //Create a MongoDB client, open a connection to DocDB; as a replica set,
 //  and specify the read preference as secondary preferred
